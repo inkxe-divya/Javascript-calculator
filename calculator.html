@@ -1,0 +1,278 @@
+<html>
+<head>
+<title>Calculator</title>
+<script language="javascript">
+var i,j,op1=0,op2=0,res=0,op=0,mop=0;
+
+function digit(i)
+{
+	
+	op1=(op1*10)+i;
+/*if(op1==0 && op2==0)
+{
+	//op1=i;
+	op1=op1*10+i;
+
+}
+else
+{
+	
+	op2=op1;
+	op1=op1*10+i;*/
+	
+	
+
+
+document.calc.display.value+=i;
+
+}
+function operation(j)
+{
+	//if(j.indexOf('+')>-1)\
+	//var sign=j;
+	//op2=op1;
+
+	if(j=='+')
+	{
+		if(op==0)
+		{
+		op=mop=1;
+		}
+		else
+		{	mop=op;
+			op=1;
+			//op1+=op2;
+			mcalc();
+		}
+		/*if(op2==0)
+			op2=op1;
+		else
+			mcalc();*/
+	}
+//res=op1+op2;
+	else if(j=='-')
+	{
+		if(op==0)
+		{
+		op=mop=2
+		}
+		else
+		{	
+			mop=op;
+			op=2;
+			//op1=op2-op1;
+			mcalc();
+		}
+
+		if(op2==0)
+			op2=op1;
+		else
+			mcalc();
+	}
+
+	else if(j=='*')
+	{
+		if(op==0)
+		{
+		op=mop=3;
+		}
+		else
+		{
+			mop=op;
+			op=3;
+			mcalc();
+		}
+		
+	}
+	else if(j=='/')
+	{
+			if(op==0)
+		{
+		op=mop=4;
+		}
+	else
+		{	mop=op;
+			op=4;
+			mcalc();
+		}
+	}
+	//mop=op;
+	if(res==0)
+	op2=op1;
+	else
+		op2=res;
+	op1=0;
+document.calc.display.value+=j;
+//document.calc.display.value=res;
+
+}
+
+
+
+function equal()
+{
+	switch(op)
+{
+	case 1:
+	{
+		res=op1+op2;
+		
+		break;
+	}
+	case 2:
+	{
+		res=op2-op1;
+	
+		break;
+	}
+	case 3:
+	{
+	res= op1*op2;
+	
+	break;
+	}
+	case 4:
+	{
+	res= op2/op1;
+	
+	break;
+	}
+	case 5:
+	{
+	
+	
+	break;
+	}
+	
+}	
+document.calc.display.value=res;
+op=op1=op2=0;
+if(res!=0)
+{
+	op2=res;
+}
+
+
+}
+function mcalc()
+{
+ switch(mop)
+ {
+ 	case 1:
+	{
+
+		
+		//document.calc.display.value=op1;
+		res=op1+op2;
+		break;
+	}
+	case 2:
+	{
+		res=op2-op1;
+	
+		break;
+	}
+	case 3:
+	{
+		res= op1*op2;
+	
+		break;
+	}
+	case 4:
+	{
+		res= op2/op1;
+		
+		break;
+	}
+	case 5:
+	{
+	
+	
+	break;
+	}
+}
+document.calc.display.value=res;
+//op2=res;
+//op1=0;
+ 
+}
+
+function clr()
+{
+	document.calc.display.value="";
+	op=op1=op2=res=0;
+}
+
+</script>
+</head>
+<body>
+<form name="calc">
+<table align="center" bgcolor="black" cellspadding=5 cellspacing=5 height=200 width=200>
+<tr>
+<td colspan=4 align="center">
+<input type="text" name="display">
+</td>
+</tr>
+<tr>
+<td>
+<input type="button"  value=" 7 " onClick="digit(7)">
+</td>
+<td>
+<input type="button"  value=" 8 " onClick="digit(8)">
+</td>
+<td>
+<input type="button"  value=" 9 " onClick="digit(9)">
+</td>
+<td>
+<input type="button"  value=" + " onClick="operation('+')">
+</td>
+</tr>
+<tr>
+<td>
+<input type="button"  value=" 4 " onClick="digit(4)">
+</td>
+<td>
+<input type="button"  value=" 5 " onClick="digit(5)">
+</td>
+<td>
+<input type="button"  value=" 6 " onClick="digit(6)">
+</td>
+<td>
+<input type="button"  value=" - " onClick="operation('-')">
+</td>
+</tr>
+<tr>
+<td>
+<input type="button"  value=" 1 " onClick="digit(1)">
+</td>
+<td>
+<input type="button"  value=" 2 " onClick="digit(2)">
+</td>
+<td>
+<input type="button"  value=" 3 " onClick="digit(3)">
+</td>
+<td>
+<input type="button"  value=" * " onClick="operation('*')">
+</td>
+</tr>
+<tr>
+<td>
+<input type="button"  value=" 0 " onClick="digit(0)">
+</td>
+<td>
+<input type="button"  value=" = " onClick="equal()">
+</td>
+<td>
+<input type="button"  value=" / " onClick="operation('/')">
+</td>
+<td>
+<input type="button"  value=" c " onClick="clr()">
+</td>
+</tr>
+
+
+</table>
+
+</form>
+</body>
+</html>
